@@ -1,0 +1,6 @@
+#!/bin/bash
+wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/tags/v18.0d1e1.0.tar.gz
+tar -xvf *.tar.gz
+mkdir -p $HOME/.local/share/fonts/
+cp SF-Mono-Nerd-Font-18.0d1e1.0/* $HOME/.local/share/fonts
+rm -rf *.tar.gz SF*

@@ -1,3 +1,4 @@
+!~/.config/yadm
 
 # Directories
 Applications/
@@ -24,6 +25,7 @@ ws_pheno/
 
 
 # Hidden files
+.venv/
 .codeium/
 .rviz2
 .mlp/
