@@ -19,9 +19,12 @@ Projects/
 Websites/
 Sharing
 Public
+ros_catkin_ws/
+ws_pheno/
 
 
 # Hidden files
+.codeium/
 .rviz2
 .mlp/
 .var/
