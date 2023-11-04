@@ -6,7 +6,7 @@
 cd ~
 git clone --recurse-submodules git@github.com:AleRiccardi/dotfiles.git
 rsync -av dotfiles/ ./
-rm -r dotfiles
+rm -rf dotfiles
 
 touch .zshenv_local .functions/functions_local.sh
 ```
@@ -64,7 +64,7 @@ Some plugins in order to work correctly require a NerdFont . Chose the one that 
 
 Otherwise download the JetBrains Mono NerdFont:
 ```
-cd ~/.local/share/fonts/ && mkdir JetBrainsMono && cd JetBrainsMono
+mkdir -p ~/.local/share/fonts/JetBrainsMono && cd ~/.local/share/fonts/JetBrainsMono
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
 unzip JetBrainsMono.zip && rm -r JetBrainsMono.zip
 ```
