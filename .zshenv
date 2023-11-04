@@ -1,9 +1,10 @@
+source $HOME/.zshrc_local 2>/dev/null || true
+
 # PATH
 export PATH=$PATH:$HOME/scripts/
 export PATH=$PATH:$HOME/usr/bin
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(ls -d $HOME/3rdparty/*/)
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
@@ -27,3 +28,6 @@ export LC_ALL=en_US.UTF-8
 
 # Fix Poetry error from "https://github.com/python-poetry/poetry/issues/1917"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+# Load the fuck
+command -v thefuck >/dev/null 2>&1 && eval $(thefuck --alias)

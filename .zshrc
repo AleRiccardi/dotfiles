@@ -17,9 +17,13 @@ plugins=(
 export ZSH=$HOME/.oh-my-zsh
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zshenv
-source $HOME/.zshenv_local
 source $HOME/.aliases.zsh
 source $HOME/.functions/functions.sh
-source $HOME/.functions/functions_local.sh
+source $HOME/.zshenv
+
+# share bash/zsh history
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+setopt noextendedhistory
 

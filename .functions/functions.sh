@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 source $HOME/.functions/general.sh
+source $HOME/.functions/functions_local.sh 2>/dev/null || true
 
 to_xclip() {
     echo "Copying $@ to clipboard"

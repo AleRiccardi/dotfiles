@@ -23,6 +23,7 @@ rsync
 ruby@3.0
 shfmt
 the_silver_searcher
+thefuck
 tig
 tmux
 tmuxinator

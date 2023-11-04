@@ -44,7 +44,6 @@ ws_pheno/
 .condarc
 .anaconda3/
 .pidatalocal
-.tmux/resurrect/
 .gtk-bookmarks
 .pulse-cookie
 .klei/
