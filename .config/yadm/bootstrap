@@ -13,7 +13,7 @@ install_neovim_extensions
 install_standalone_clangd
 
 # TODO: This breaks docker builds :)
-# install_fonts
+install_fonts
 
 DECRYPT=${DECRYPT:-no}
 if [ $DECRYPT = yes ]; then
