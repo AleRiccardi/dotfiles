@@ -10,6 +10,7 @@ install_brew_packages
 install_pip_packages
 install_ohmyzsh
 install_neovim_extensions
+echo "Works untill here"
 # install_standalone_clangd
 
 # TODO: This breaks docker builds :)
