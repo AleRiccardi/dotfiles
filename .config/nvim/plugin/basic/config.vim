@@ -36,8 +36,8 @@ set clipboard=unnamedplus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 syntax enable
-colorscheme xcodedark
-" colorscheme xcodelight
+colorscheme xcodedarkhc
+" colorscheme xcodelighthc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo

@@ -101,10 +101,10 @@ install_standalone_clangd() {
 }
 
 install_fonts() {
-  if [[ -z $(fc-list | grep JetBrains) ]]; then
-    echo "SFMono patched fonts not installed, this might take a bit"
+  if [[ -z $(fc-list | grep JetBrainsMono) ]]; then
+    echo "JetBrainsMono patched fonts not installed, this might take a bit"
     sh ~/.config/fonts/install_fonts.sh
   else
-    echo "SFMono patched already installed, skipping"
+    echo "JetBrainsMono patched already installed, skipping"
   fi
 }

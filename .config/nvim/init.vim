@@ -6,8 +6,8 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lervag/vimtex'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'nachovizzo/committia.vim'
-Plug 'nachovizzo/vim-colors-xcode'
+Plug 'rhysd/committia.vim'
+Plug 'arzg/vim-colors-xcode'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -20,6 +20,12 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-surround'
 Plug 'nvimdev/dashboard-nvim'
 Plug 'folke/zen-mode.nvim'
+Plug 'tell-k/vim-autoflake'
+Plug 'brentyi/isort.vim'
+Plug 'arzg/vim-colors-xcode'
+Plug 'embear/vim-localvimrc'
+Plug '907th/vim-auto-save'
+Plug 'preservim/tagbar'
 call plug#end()
 
 " WIP ==============================================================================================

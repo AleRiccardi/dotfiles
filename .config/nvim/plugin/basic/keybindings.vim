@@ -54,8 +54,8 @@ map <Leader>ipdb :call functions#InsertIpdbLine()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme, TOOD: define a darktheme and a light theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <silent><leader>d :colorscheme  xcodedark<cr>
-nmap <silent><leader>l :colorscheme xcodelight<cr>
+nmap <silent><leader>d :colorscheme  xcodedarkhc<cr>
+nmap <silent><leader>l :colorscheme xcodelighthc<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Useful mappings to make search results appear in the middle of the screen
