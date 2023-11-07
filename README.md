@@ -4,14 +4,14 @@ Welcome to my dotfiles repository!
 
 ## Acknowledgements
 
-I would like to express my gratitude to the creators and contributors of [nachovizzo/dotfile](link-to-repo-X) for providing this awesome template.
+I would like to express my gratitude to the creators and contributors of [nachovizzo/dotfile](https://github.com/nachovizzo/dotfiles) for providing this awesome template.
 
 ## Dependencies
 
-* `curl`
-* `git`
-* root access
-* build-essential for Linux and Developer Tools for macOS
+- `curl`
+- `git`
+- root access
+- build-essential for Linux and Developer Tools for macOS
 
 ## Installation
 
