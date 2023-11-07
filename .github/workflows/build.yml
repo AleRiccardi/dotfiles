@@ -1,0 +1,26 @@
+name: On-Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run YADM Bootstrap
+        run: brew install yadm  && yadm clone --bootstrap https://github.com/nachovizzo/dotfiles.git
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Brew
+        run: NONINTERACTIVE=1  CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: Run YADM Bootstrap
+        run: echo "WIP"
+        # run: brew install yadm  && yadm clone --bootstrap https://github.com/nachovizzo/dotfiles.git

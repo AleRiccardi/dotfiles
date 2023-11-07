@@ -9,18 +9,8 @@ export PATH=$PATH:/usr/local/go/bin
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
-# Make sure Google Tests run always with a colored output
-export GTEST_COLOR=1
-
 # This allow you to install a package if it's not found on the system
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export TERM=xterm-256color
-
-# fzf plugin path
-export FZF_BASE=$HOME/3rdparty/.fzf
 
 # Enusre to use the en_US.UTF-8 locale
 export LC_CTYPE=en_US.UTF-8
@@ -28,6 +18,19 @@ export LC_ALL=en_US.UTF-8
 
 # Fix Poetry error from "https://github.com/python-poetry/poetry/issues/1917"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+# no brew no love. For bash? no care
+if [ "$SYSTEM_TYPE" = "Darwin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || true)"
+else
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv 2>/dev/null || true)"
+fi
+
+# Fix zsh autocomplete in zsh
+if [ -f /opt/ros/${ROS_DISTRO}/setup.zsh ]; then
+  source /opt/ros/${ROS_DISTRO}/setup.zsh
+  complete -o nospace -o default -F _python_argcomplete "ros2"
+fi
 
 # Load the fuck
 command -v thefuck >/dev/null 2>&1 && eval $(thefuck --alias)

@@ -4,19 +4,16 @@
 let mapleader = " "
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set spell
 set number
 set backspace=eol,start,indent
-set clipboard^=unnamed
 set cmdheight=1
-set colorcolumn=79
-set completeopt+=menuone,noselect
+set colorcolumn=+1
+set completeopt+=menu
 set cursorline
 set hidden
 set ignorecase
@@ -24,7 +21,6 @@ set inccommand=split
 set incsearch
 set lazyredraw
 set linebreak
-set mouse=a
 set nohlsearch
 set nowrap
 set smartcase
@@ -33,25 +29,23 @@ set splitright
 set termguicolors
 set textwidth=100
 set whichwrap+=<,>,h,l
-
+set mouse=a
+set clipboard=unnamedplus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 syntax on
 syntax enable
-colorscheme xcodedarkhc
+colorscheme xcodedark
+" colorscheme xcodelight
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
-set undodir=~/.vim/temp_dirs/undodir/
 set undofile
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -70,3 +64,10 @@ set softtabstop=-1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set exrc
 set secure
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Disable automatic comment insertion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set formatoptions-=cro "Never worked for me!
+" https://vi.stackexchange.com/questions/9366/set-formatoptions-in-vimrc-is-being-ignored
+autocmd FileType * set formatoptions-=ro
