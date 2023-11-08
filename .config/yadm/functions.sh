@@ -106,7 +106,7 @@ install_neovim() {
 
   # Install vim-plug packages
   nvim --noplugin --headless +PlugInstall +qall
-  curl -sL install-node.vercel.app/lts > install-node.sh
+  curl -sL install-node.vercel.app/lts >install-node.sh
   chmod +x install-node.sh
   sudo bash install-node.sh -y
   rm install-node.sh
