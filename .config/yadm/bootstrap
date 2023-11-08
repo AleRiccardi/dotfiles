@@ -3,6 +3,8 @@ set -e
 
 source "$(dirname "$(realpath "$0")")"/functions.sh
 
+print_intro "dotfile installation"
+
 install_packages_apt
 install_packages_pip
 install_ohmyzsh
