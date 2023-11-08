@@ -12,6 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run YADM Bootstrap
-        run: sh -c "$(curl -fsSL https://raw.githubusercontent.com/alericcardi/dotfiles/main/.config/yadm/install.sh)" "" --decrypt
+        run: sudo apt-get install yadm && yadm clone --bootstrap https://github.com/alericcardi/dotfiles.git
 
 
