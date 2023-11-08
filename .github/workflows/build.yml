@@ -13,7 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Install YADM 
         run: sudo apt-get install yadm
-      - name: Install dotfiles
+      - name: Clone dotfiles
         run: yadm clone --bootstrap https://github.com/alericcardi/dotfiles.git 
+      - name: Install dotfiles
+        run: yadm bootstrap 
 
 
