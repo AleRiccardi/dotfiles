@@ -3,10 +3,10 @@ set -e
 
 source "$(dirname "$(realpath "$0")")"/functions.sh
 
-install_apt_packages
-install_pip_packages
+install_packages_apt
+install_packages_pip
 install_ohmyzsh
-install_neovim_extensions
+install_neovim
 install_standalone_clangd
 
 # TODO: This breaks docker builds :)

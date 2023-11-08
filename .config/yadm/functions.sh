@@ -39,15 +39,20 @@ install_ohmyzsh() {
     ${ZSH_CUSTOM}/plugins/zsh-completions 2>/dev/null || true
 }
 
-install_neovim_extensions() {
+install_neovim() {
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  sudo chmod +x nvim.appimage
+  sudo mv nvim.appimage /usr/local/bin
+  sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
+
   # Install vim-plug packages
-  echo "Ciao----------------------------------------"
   nvim --noplugin --headless +PlugInstall +qall
 
-  echo "Ciao----------------------------------------"
   # Manually install coc-extensions(https://github.com/neoclide/coc.nvim/issues/118)
   COC_EXTENSIONS=$(nvim --headless -c 'echo coc_global_extensions' +qa 2>&1 | awk -v RS="'" '!(NR%2)')
   COC_EXT_DIR="$HOME/.config/coc/extensions"
+  echo $COC_EXTENSIONS
+  echo $COC_EXT_DIR
   mkdir -p $COC_EXT_DIR && cd $COC_EXT_DIR && [ ! -f package.json ] && echo '{"dependencies":{}}' >package.json
   npm install $(echo $COC_EXTENSIONS) --install-strategy=shallow --ignore-scripts --no-bin-links --no-package-lock --only=prod
 }
