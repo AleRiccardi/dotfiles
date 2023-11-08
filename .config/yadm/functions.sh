@@ -11,40 +11,39 @@ CYAN='\e[0;36m'
 NC='\e[0m'
 
 function print_info() {
-    echo -e "${BLUE}${1}${NC}"
+  echo -e "${BLUE}${1}${NC}"
 }
 
 function print_ok() {
-    echo -e "${GREEN}OK${NC} - $1"
+  echo -e "${GREEN}OK${NC} - $1"
 }
 
 function print_warning() {
-    echo -e "${YELLOW}WARNING${NC} - $1"
+  echo -e "${YELLOW}WARNING${NC} - $1"
 }
 
 function print_error() {
-    echo -e "${RED}ERROR${NC} - $1"
+  echo -e "${RED}ERROR${NC} - $1"
 }
 
 function fill_line() {
-    local l=
-    builtin printf -vl "%${2:-${COLUMNS:-$(tput cols 2>&- || echo 80)}}s" && echo -e "${l// /${1:-=}}"
+  local l=
+  builtin printf -vl "%${2:-${COLUMNS:-$(tput cols 2>&- || echo 80)}}s" && echo -e "${l// /${1:-=}}"
 }
 
 function print_intro() {
-    echo
-    fill_line "+"
-    print_info " ${1}"
-    fill_line "+"
+  echo
+  fill_line "+"
+  print_info " ${1}"
+  fill_line "+"
 }
 
 function print_title() {
-    echo
-    fill_line "="
-    print_info " ${1}"
-    fill_line "="
+  echo
+  fill_line "="
+  print_info " ${1}"
+  fill_line "="
 }
-
 
 command_exists() {
   command -v "$@" >/dev/null 2>&1
@@ -93,21 +92,26 @@ install_neovim() {
   print_title "Install Neovim"
 
   # Check if nvim exists
-  if hash nvim; then
+  if command_exists nvim; then
     # Check nvim version
     nvim_version=$(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)
-    echo "nvim is already installed (v$nvim_version)"
+    echo "nvim is already installed ($nvim_version)"
   else
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     sudo chmod +x nvim.appimage
     sudo mv nvim.appimage /usr/local/bin
     sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
   fi
-  
-
 
   # Install vim-plug packages
   nvim --noplugin --headless +PlugInstall +qall
+
+  curl -sL install-node.vercel.app/lts > install-node.sh
+  chmod +x install-node.sh
+  sudo bash install-node.sh -y
+  rm install-node.sh
+
+
 
   # Manually install coc-extensions(https://github.com/neoclide/coc.nvim/issues/118)
   COC_EXTENSIONS=$(nvim --headless -c 'echo coc_global_extensions' +qa 2>&1 | awk -v RS="'" '!(NR%2)')
