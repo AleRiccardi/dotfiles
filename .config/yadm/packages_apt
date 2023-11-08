@@ -5,8 +5,10 @@ clang-format
 cloc
 cmatrix
 curl
+fuse 
 fzf
 htop
+libfuse2
 make
 nmap
 p7zip
