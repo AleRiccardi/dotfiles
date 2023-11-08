@@ -2,6 +2,7 @@
 set -e
 
 source "$(dirname "$(realpath "$0")")"/functions.sh
+echo "SMT__________________"
 
 install_packages_apt
 install_packages_pip
