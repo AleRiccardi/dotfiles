@@ -1,7 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Format Keybindings (using Neoformat)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent><leader>f  :Neoformat<cr>
+nmap <silent><leader>ff :Neoformat<cr> :Isort<cr>
+nmap <silent><leader>af :Autoflake<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Telescope

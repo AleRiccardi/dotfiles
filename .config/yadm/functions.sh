@@ -44,9 +44,9 @@ install_neovim_extensions() {
 
 install_pip_packages() {
   # PEP 668 forces us to install all python packages in a self-managed env
-  rm -rf $HOME/.venv
-  python3.10 -m venv --system-site-packages $HOME/.venv
-  source $HOME/.venv/bin/activate
+  # rm -rf $HOME/.venv
+  # python3.10 -m venv --system-site-packages $HOME/.venv
+  # source $HOME/.venv/bin/activate
   python3 -m pip install --upgrade -r $HOME/.config/yadm/pip_packages
 }
 
