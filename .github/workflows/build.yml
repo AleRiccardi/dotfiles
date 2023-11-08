@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run YADM Bootstrap
-        run: sudo apt-get install yadm && yadm clone https://github.com/alericcardi/dotfiles.git && yadm bootstrap
+      - name: Install YADM 
+        run: sudo apt-get install yadm
+      - name: Install dotfiles
+        run: yadm clone --bootstrap https://github.com/alericcardi/dotfiles.git 
 
 
