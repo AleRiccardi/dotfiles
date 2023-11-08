@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+print("")
 
 source "$(dirname "$(realpath "$0")")"/functions.sh
 
