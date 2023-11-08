@@ -14,7 +14,7 @@ jobs:
       - name: Install YADM 
         run: sudo apt-get install yadm
       - name: Clone dotfiles
-        run: yadm clone --bootstrap https://github.com/alericcardi/dotfiles.git && ls && pwd
+        run: cd $HOME && yadm clone https://github.com/alericcardi/dotfiles.git
       - name: Install dotfiles
         run: yadm bootstrap 
 
