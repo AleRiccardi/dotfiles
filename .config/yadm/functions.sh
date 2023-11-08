@@ -4,12 +4,12 @@ command_exists() {
   command -v "$@" >/dev/null 2>&1
 }
 
-install_apt_packages() {
-  xargs sudo apt -y install <$HOME/.config/yadm/apt_packages
+install_packages_apt() {
+  xargs sudo apt -y install <$HOME/.config/yadm/packages_apt
 }
 
-install_pip_packages() {
-  python3 -m pip install --upgrade -r $HOME/.config/yadm/pip_packages
+install_packages_pip() {
+  python3 -m pip install --upgrade -r $HOME/.config/yadm/packages_pip
 }
 
 install_ohmyzsh() {
