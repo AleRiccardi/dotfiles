@@ -101,17 +101,15 @@ install_neovim() {
     sudo chmod +x nvim.appimage
     sudo mv nvim.appimage /usr/local/bin
     sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
+    echo "nvim installed ($nvim_version)"
   fi
 
   # Install vim-plug packages
   nvim --noplugin --headless +PlugInstall +qall
-
   curl -sL install-node.vercel.app/lts > install-node.sh
   chmod +x install-node.sh
   sudo bash install-node.sh -y
   rm install-node.sh
-
-
 
   # Manually install coc-extensions(https://github.com/neoclide/coc.nvim/issues/118)
   COC_EXTENSIONS=$(nvim --headless -c 'echo coc_global_extensions' +qa 2>&1 | awk -v RS="'" '!(NR%2)')
