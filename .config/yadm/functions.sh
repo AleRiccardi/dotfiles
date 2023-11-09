@@ -108,7 +108,7 @@ install_neovim() {
   sudo mv nvim.appimage /usr/local/bin
   sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
   nvim --noplugin --headless +PlugInstall +qall
-  echo "NVIM installed ($nvim_version)"
+  echo "NVIM installed ($(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)"
 }
 
 install_node() {
