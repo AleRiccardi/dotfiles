@@ -26,7 +26,9 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'embear/vim-localvimrc'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
+
 
 " WIP ==============================================================================================
 " TODO(Nacho): Transistion this into a plugin in the future !

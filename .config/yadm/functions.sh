@@ -11,7 +11,11 @@ CYAN='\e[0;36m'
 NC='\e[0m'
 
 function print_info() {
-  echo -e "${BLUE}${1}${NC}"
+  echo -e "${PURPLE}${1}${NC}"
+}
+
+function print_green() {
+  echo -e "${GREEN}${1}${NC}"
 }
 
 function print_ok() {
@@ -42,6 +46,13 @@ function print_title() {
   echo
   fill_line "="
   print_info " ${1}"
+  fill_line "="
+}
+
+function print_success() {
+  echo
+  fill_line "="
+  print_green " ${1}"
   fill_line "="
 }
 
@@ -89,27 +100,26 @@ install_ohmyzsh() {
 }
 
 install_neovim() {
-  print_title "Install Neovim"
+  print_title "Install NVIM"
+  command_exists nvim && echo "NVIM already installed on the system: $(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)" && return
 
-  # Check if nvim exists
-  if command_exists nvim; then
-    # Check nvim version
-    nvim_version=$(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)
-    echo "nvim is already installed ($nvim_version)"
-  else
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    sudo chmod +x nvim.appimage
-    sudo mv nvim.appimage /usr/local/bin
-    sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
-    echo "nvim installed ($nvim_version)"
-  fi
-
-  # Install vim-plug packages
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  sudo chmod +x nvim.appimage
+  sudo mv nvim.appimage /usr/local/bin
+  sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
   nvim --noplugin --headless +PlugInstall +qall
+  echo "NVIM installed ($nvim_version)"
+}
+
+install_node() {
+  print_title "Install NODE"
+  command_exists node && echo "NODE already installed on the system ($(node -v))" && return
+
   curl -sL install-node.vercel.app/lts >install-node.sh
   chmod +x install-node.sh
   sudo bash install-node.sh -y
   rm install-node.sh
+  echo "NODE installed ($(node -v))"
 
   # Manually install coc-extensions(https://github.com/neoclide/coc.nvim/issues/118)
   COC_EXTENSIONS=$(nvim --headless -c 'echo coc_global_extensions' +qa 2>&1 | awk -v RS="'" '!(NR%2)')
@@ -120,10 +130,9 @@ install_neovim() {
 
 # To fetch clangd in brew we need to pull the whole llvm toolchain, which brings 1.5GiB to the
 # workspace, luckilly clang-format is available as standalone package
-install_standalone_clangd() {
-  print_title "Install clangd"
-
-  command_exists clangd && echo "clangd already isntalled on the system: $(clangd --version)" && return
+install_clangd() {
+  print_title "Install CLANGD"
+  command_exists clangd && echo "CLANGD already installed on the system (v$(clangd --version | grep "clangd version " | cut -d ' ' -f 3))" && return
 
   # TODO: Automatically determine latest stable version, and don't hardcode linux
   CLANGD_VERSION="16.0.2"
@@ -135,12 +144,17 @@ install_standalone_clangd() {
 }
 
 install_fonts() {
-  print_title "Install fonts"
+  print_title "Install JetBrainsMono fonts"
+  [[ ! -z $(fc-list | grep JetBrainsMono) ]] && echo "JetBrainsMono font already installed on the system" && return
 
-  if [[ -z $(fc-list | grep JetBrainsMono) ]]; then
-    echo "JetBrainsMono patched fonts not installed, this might take a bit"
-    sh ~/.config/fonts/install_fonts.sh
-  else
-    echo "JetBrainsMono patched already installed, skipping"
-  fi
+  sh ~/.config/fonts/install_fonts.sh
+}
+
+decrypt_files() {
+  print_title "Decrypt files"
+
+  DECRYPT=${DECRYPT:-no}
+  [ ! $DECRYPT = yes ] && echo "Skipping encrypted files, as requested" && return
+
+  yadm decrypt
 }
