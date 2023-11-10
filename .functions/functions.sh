@@ -8,11 +8,9 @@ to_xclip() {
     cat "$@" | xcopy
 }
 
-
 count() {
     ls -1 $1 | wc -l
 }
-
 
 ssh-keygen-now() {
     ssh-keygen -t rsa -b 4096
@@ -24,16 +22,16 @@ replace_text() {
 
     files=$(ag $from -l --hidden --ignore ".git")
     files_count=$(echo $files | wc -l)
-    
+
     if [[ $files == "" ]]; then
         echo "No recurrences in any file"
-        return 
+        return
     fi
 
     echo "Replace in $files_count file(s)"
 
     echo ""
-    ag $from --hidden  --ignore ".git"
+    ag $from --hidden --ignore ".git"
     echo ""
 
     if [[ $(ask_yes_no "Replace all") == true ]]; then
@@ -41,7 +39,7 @@ replace_text() {
             sed -i "s/$from/$to/g" $file
         done
     fi
- }
+}
 
 MP4_to_MOV() {
     mp4_path=${1}
@@ -61,9 +59,8 @@ poetry_activate() {
         return $result
     fi
 
-
     if [[ $path_env =~ "Activate" ]]; then
-        path_env=$(echo $path_env | grep Activated | cut -d' ' -f1 )
+        path_env=$(echo $path_env | grep Activated | cut -d' ' -f1)
         result=$?
 
         if [[ $result != 0 ]]; then
@@ -79,4 +76,9 @@ poetry_activate() {
         echo "Could not activate the environment."
         return 1
     fi
+}
+
+www_grant_permission() {
+    sudo chown ${USER}:www-data -R /var/www
+    sudo chmod 775 -R /var/www
 }

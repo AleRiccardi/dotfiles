@@ -15,6 +15,9 @@ install_fonts
 
 
 decrypt_files
+razer_compatibility
+install_add_software
+install_lamp
 
 
 print_success "Installation compleated"

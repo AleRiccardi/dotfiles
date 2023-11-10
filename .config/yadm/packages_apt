@@ -5,7 +5,6 @@ clang-format
 cloc
 cmatrix
 curl
-fuse 
 fzf
 htop
 libfuse2

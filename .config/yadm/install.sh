@@ -3,9 +3,18 @@ set -e
 
 main() {
   # Parse arguments
-  while [ $# -gt 0 ]; do
-    case $1 in
+  for arg in $@; do
+    case $arg in
       --decrypt) export DECRYPT=yes ;;
+    esac
+    case $arg in
+      --razer) export RAZER=yes ;;
+    esac
+    case $arg in
+      --additional) export ADDITIONAL=yes ;;
+    esac
+    case $arg in
+      --lamp) export LAMP=yes ;;
     esac
     shift
   done
