@@ -68,7 +68,7 @@ install_packages_apt() {
 
 install_packages_pip() {
   print_title "Install packages PIP"
-  python3 -m pip install --upgrade -r $HOME/.config/yadm/packages_pip
+  python3 -m pip install --break-system-packages --upgrade -r $HOME/.config/yadm/packages_pip
   print_ok "PIP packaged installed"
 }
 
@@ -106,10 +106,10 @@ install_neovim() {
   print_title "Install NVIM"
   command_exists nvim && print_ok "NVIM already installed on the system: $(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)" && return
 
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  sudo chmod +x nvim.appimage
-  sudo mv nvim.appimage /usr/local/bin
-  sudo ln -s /usr/local/bin/nvim.appimage /usr/bin/nvim
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+  sudo chmod +x nvim-linux-x86_64.appimage
+  sudo mv nvim-linux-x86_64.appimage /usr/local/bin
+  sudo ln -s /usr/local/bin/nvim-linux-x86_64.appimage /usr/bin/nvim
   nvim --noplugin --headless +PlugInstall +qall
   print_ok "NVIM installed ($(nvim -v | grep 'NVIM v' | cut -d ' ' -f 2)"
 }
